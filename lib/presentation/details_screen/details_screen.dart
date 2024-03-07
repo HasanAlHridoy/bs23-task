@@ -1,10 +1,13 @@
 import 'package:bs23_task/core/utils/size_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../widgets/app_bar/custom_app_bar.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+  final Map<String, dynamic> ownerData;
+
+  const DetailsPage({super.key, required this.ownerData});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,6 @@ class DetailsPage extends StatelessWidget {
         leadingWidth: 40.h,
         centerTitle: true,
         height: 54.v,
-
       ),
       body: Padding(
         padding: EdgeInsets.all(16.adaptSize),
@@ -41,7 +43,7 @@ class DetailsPage extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: NetworkImage('https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+                  image: NetworkImage(ownerData['owner']['avatar_url']),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -51,7 +53,7 @@ class DetailsPage extends StatelessWidget {
 
             // Name
             Text(
-              'John Doe',
+              ownerData['name'],
               style: TextStyle(
                 fontSize: 24.fSize,
                 fontWeight: FontWeight.bold,
@@ -62,13 +64,13 @@ class DetailsPage extends StatelessWidget {
 
             // Description
             Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              ownerData['description'],
               style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.grey[600],
               ),
             ),
-             SizedBox(height: 16.v),
+            SizedBox(height: 16.v),
             Align(
               alignment: Alignment.centerLeft,
               child: Text.rich(
@@ -81,11 +83,9 @@ class DetailsPage extends StatelessWidget {
                   ),
                   children: [
                     TextSpan(
-                      text: '${DateTime.now().month.toString().padLeft(2, '0')}-'
-                          '${DateTime.now().day.toString().padLeft(2, '0')}-'
-                          '${DateTime.now().year.toString().padLeft(2, '0')} '
-                          '${DateTime.now().hour.toString().padLeft(2, '0')}:'
-                          '${DateTime.now().minute.toString().padLeft(2, '0')}',
+                      text: (ownerData['updated_at'] != null)
+                          ? DateFormat('MM-dd-yy HH:mm').format(DateTime.parse(ownerData['updated_at'])).toString()
+                          : 'N/A',
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.grey[600],
