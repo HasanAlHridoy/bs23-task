@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../core/utils/color_constant.dart';
 import '../../core/utils/size_utils.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  CustomAppBar({
+  const CustomAppBar({
     Key? key,
     this.height,
     this.styleType,
@@ -34,10 +35,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
-      forceMaterialTransparency: true,
+      elevation: 2,
+      shadowColor: Colors.grey,
+      // forceMaterialTransparency: true,
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
+      // backgroundColor: Colors.transparent,
       flexibleSpace: _getStyle(),
       leadingWidth: leadingWidth ?? 0,
       leading: leading,
@@ -51,7 +53,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size(
         SizeUtils.width,
-        height ?? 63.adaptSize,
+        height ?? 60.adaptSize,
       );
 
   _getStyle() {
@@ -62,7 +64,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           width: double.maxFinite,
           margin: EdgeInsets.only(top: 60.v),
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: ConfigColors.greenColor,
           ),
         );
       case Style.bgFill:
@@ -74,7 +76,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             top: 61.v,
           ),
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: ConfigColors.accentColor,
           ),
         );
       default:

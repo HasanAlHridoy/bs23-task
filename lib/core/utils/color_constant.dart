@@ -62,43 +62,4 @@ class ConfigColors {
 
 class AppAssets {
   static const demoUser = "assets/img/user_demo.jpg";
-
-  // splash screen
-  static const splash = 'assets/img/splash_screen.svg';
-
-  static const mainLogo = 'assets/svg/main_logo.svg';
-
-  // settings screen
-  static const settingAccount = 'assets/setting/account.svg';
-  static const settingNotification = 'assets/setting/notification.svg';
-  static const settingPrivacy = 'assets/setting/privacy_security.svg';
-  static const settingHelp = 'assets/setting/help.svg';
-  static const settingAbout = 'assets/setting/about.svg';
-  static const settingLogout = 'assets/setting/logout.svg';
-  static const warranty = 'assets/setting/warranty.svg';
-
-  // Product List
-  static const search = 'assets/svg/search.svg';
-  static const filter = 'assets/svg/filter.svg';
-  static const line = 'assets/svg/line.svg';
-
-  // home screen
-  static const imgCar1 = 'assets/img/img_carousel_1.png';
-  static const imgCar2 = 'assets/img/img_carousel_2.png';
-  static const imgCar3 = 'assets/img/img_carousel_3.png';
-  static const warrantyRules = 'assets/home/warranty_rules.svg';
-  static const homeSelected = 'assets/home/home_selected.svg';
-  static const homeUnelected = 'assets/home/home_unselected.svg';
-  static const listSelected = 'assets/home/list_selected.svg';
-  static const listUnselected = 'assets/home/list_unselected.svg';
-  static const reportSelected = 'assets/home/report_selected.svg';
-  static const reportUnselected = 'assets/home/report_unselected.svg';
-  static const settingsSelected = 'assets/home/settings_selected.svg';
-  static const settingsUnselected = 'assets/home/settings_unselected.svg';
-
-//
-  static const fbIcon = 'assets/home/facebook.svg';
-  static const webIcon = 'assets/home/website.svg';
-  static const questionIcon = 'assets/svg/question.svg';
-  static const upDownIcon = 'assets/svg/upDown.svg';
 }
