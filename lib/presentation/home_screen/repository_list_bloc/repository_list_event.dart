@@ -4,3 +4,7 @@ part of 'repository_list_bloc.dart';
 abstract class RepositoryListEvent {}
 
 class RepositoryListLoadedEvent extends RepositoryListEvent {}
+
+class RepositorySearchByStarCountEvent extends RepositoryListEvent {}
+
+class RepositorySearchByUpdatedAtEvent extends RepositoryListEvent {}

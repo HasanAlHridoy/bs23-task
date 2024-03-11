@@ -41,7 +41,14 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 54.v,
           actions: [
             PopupMenuButton(
-              onSelected: (value) {},
+              onSelected: (value) {
+                if (value == 'Filter by star') {
+                  repositoryListBloc.add(RepositorySearchByStarCountEvent());
+                }
+                if (value == 'Filter by Date') {
+                  repositoryListBloc.add(RepositorySearchByUpdatedAtEvent());
+                }
+              },
               icon: Icon(
                 Icons.filter_alt_outlined,
                 size: 28.adaptSize,
