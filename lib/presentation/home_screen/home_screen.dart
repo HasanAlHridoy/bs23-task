@@ -1,3 +1,4 @@
+import 'package:bs23_task/core/utils/color_constant.dart';
 import 'package:bs23_task/core/utils/size_utils.dart';
 import 'package:bs23_task/presentation/details_screen/details_screen.dart';
 import 'package:bs23_task/presentation/home_screen/repository_list_bloc/repository_list_bloc.dart';
@@ -40,10 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 54.v,
           actions: [
             PopupMenuButton(
-              onSelected: (value) {
-                // Handle the selected option
-                print('Selected option: $value');
-              },
+              onSelected: (value) {},
+              icon: Icon(
+                Icons.filter_alt_outlined,
+                size: 28.adaptSize,
+                color: ConfigColors.selectedItemColor,
+              ),
               itemBuilder: (BuildContext context) {
                 return ['Filter by Date', 'Filter by star'].map((String option) {
                   return PopupMenuItem(
@@ -73,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     return ListTile(
                       tileColor: Colors.grey[100],
                       title: Text(
-                        state.repositoryList[index]['id'].toString(),
+                        state.repositoryList[index]['name'].toString(),
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16.adaptSize,

@@ -1,4 +1,5 @@
 import 'package:bs23_task/core/utils/size_utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -48,10 +49,7 @@ class DetailsPage extends StatelessWidget {
                 ),
               ),
             ),
-
             SizedBox(height: 16.v),
-
-            // Name
             Text(
               ownerData['name'],
               style: TextStyle(
@@ -59,15 +57,15 @@ class DetailsPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             SizedBox(height: 8.v),
-
-            // Description
-            Text(
-              ownerData['description'],
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.grey[600],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                ownerData['description'],
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.grey[600],
+                ),
               ),
             ),
             SizedBox(height: 16.v),
