@@ -1,8 +1,6 @@
-import 'package:bs23_task/core/utils/size_utils.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../widgets/app_bar/custom_app_bar.dart';
+import '../../core/app_export.dart';
 
 class DetailsPage extends StatelessWidget {
   final Map<String, dynamic> ownerData;
@@ -62,7 +60,7 @@ class DetailsPage extends StatelessWidget {
               child: Text(
                 ownerData['description'],
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 16.0.fSize,
                   color: Colors.grey[600],
                 ),
               ),
@@ -74,9 +72,9 @@ class DetailsPage extends StatelessWidget {
                 TextSpan(
                   text: 'Last Update: ',
                   style: TextStyle(
-                    fontSize: 16.0,
+                    fontSize: 16.0.fSize,
                     color: Colors.grey[600],
-                    fontWeight: FontWeight.w600, // Make "Last Update: " bold
+                    fontWeight: FontWeight.w600,
                   ),
                   children: [
                     TextSpan(
@@ -84,7 +82,7 @@ class DetailsPage extends StatelessWidget {
                           ? DateFormat('MM-dd-yy HH:mm').format(DateTime.parse(ownerData['updated_at'])).toString()
                           : 'N/A',
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 16.0.fSize,
                         color: Colors.grey[600],
                         fontWeight: FontWeight.w400,
                       ),

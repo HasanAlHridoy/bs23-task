@@ -1,11 +1,4 @@
-import 'package:bs23_task/core/utils/color_constant.dart';
-import 'package:bs23_task/core/utils/size_utils.dart';
-import 'package:bs23_task/presentation/details_screen/details_screen.dart';
-import 'package:bs23_task/presentation/home_screen/repository_list_bloc/repository_list_bloc.dart';
-import 'package:bs23_task/presentation/home_screen/repository_list_bloc/repository_list_bloc.dart';
-import 'package:bs23_task/widgets/app_bar/custom_app_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../core/app_export.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,17 +8,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  ScrollController scrollController = ScrollController();
   RepositoryListBloc repositoryListBloc = RepositoryListBloc();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // scrollController.addListener(() {
-    //   // call your api here
-    // });
     repositoryListBloc.add(RepositoryListLoadedEvent());
+    repositoryListBloc.add(SchedulerEvent());
   }
 
   @override
@@ -76,7 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               } else if (state is RepositoryListLoadedState) {
                 return ListView.separated(
-                  controller: scrollController,
                   itemCount: state.repositoryList.length,
                   itemBuilder: (BuildContext context, int index) {
                     // your code

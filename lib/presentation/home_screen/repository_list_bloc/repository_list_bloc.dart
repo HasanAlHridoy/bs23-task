@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:bs23_task/data/database/boxes.dart';
 import 'package:bs23_task/data/repositories/repository_details/repository_details.dart';
 import 'package:bs23_task/data/repositories/repository_details/repository_interface.dart';
 import 'package:bs23_task/domain/common_functions/common_functions.dart';
 import 'package:bs23_task/domain/hive_functions/hive_functions.dart';
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:meta/meta.dart';
 
@@ -20,7 +20,7 @@ class RepositoryListBloc extends Bloc<RepositoryListEvent, RepositoryListState> 
     final RepositoryInterface repositoryInterface = RepositoryData();
     final Box repositoryBox = Boxes().repositoryBox;
     var getRepositoryData;
-    on<RepositoryListEvent>((event, emit) async {
+    on<RepositoryListLoadedEvent>((event, emit) async {
       emit(RepositoryListInitialState());
       if (repositoryBox.isEmpty) {
         var repoList = await repositoryInterface.getRepositoryData('Flutter');
@@ -62,10 +62,13 @@ class RepositoryListBloc extends Bloc<RepositoryListEvent, RepositoryListState> 
           }
         }
       }
-      log(jsonEncode(sortedItems));
-      print(sortedList);
-
       emit(RepositoryListLoadedState(sortedItems));
+    });
+    on<SchedulerEvent>((event, emit) async {
+      Timer.periodic(const Duration(minutes: 30), (timer) {
+        repositoryBox.clear();
+        add(RepositoryListLoadedEvent());
+      });
     });
   }
 }
