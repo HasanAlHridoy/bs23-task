@@ -55,7 +55,6 @@ class RepositoryListBloc extends Bloc<RepositoryListEvent, RepositoryListState> 
         items.add(DateTime.parse(getRepositoryData['items'][i]['updated_at']));
       }
       List<DateTime> sortedList = CommonFunctions().searchByDates(items);
-
       for (int i = 0; i < sortedList.length; i++) {
         for (int j = 0; j < getRepositoryData['items'].length; j++) {
           if (sortedList[i] == DateTime.parse(getRepositoryData['items'][j]['updated_at'])) {
@@ -63,10 +62,10 @@ class RepositoryListBloc extends Bloc<RepositoryListEvent, RepositoryListState> 
           }
         }
       }
-      print(sortedItems);
+      log(jsonEncode(sortedItems));
       print(sortedList);
 
-      emit(RepositoryListLoadedState(getRepositoryData['items']));
+      emit(RepositoryListLoadedState(sortedItems));
     });
   }
 }

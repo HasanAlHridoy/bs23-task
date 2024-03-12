@@ -8,7 +8,7 @@ class CommonFunctions {
 
   List<DateTime> searchByDates(List<DateTime> dates) {
     for (int i = 0; i < dates.length; i++) {
-      dates.sort((a, b) => a.compareTo(b));
+      dates.sort((a, b) => b.compareTo(a));
     }
     return dates;
   }
